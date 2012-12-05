@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * IF6AE Desenvolvimento de Aplicaçoões Web
  * @author Wilson Horstmeyer Bogado <wilson@utfpr.edu.br>
  */
-@WebServlet(name = "Modelo", urlPatterns = {"/modelo"})
+@WebServlet(name = "Modelo", urlPatterns = {"/modelo", "/xyz"})
 public class Modelo extends HttpServlet {
 
     /**
@@ -35,6 +35,8 @@ public class Modelo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" "
+                    + "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Modelo de Servlet</title>");            
@@ -48,9 +50,9 @@ public class Modelo extends HttpServlet {
             String nome = request.getParameter("nome");
             if  (request.getMethod().equalsIgnoreCase("post")) {
                 if (nome == null || nome.trim().isEmpty()) {
-                    out.println("<h2 style='color: red'><b>Informe o nome!</b></h2>");
+                    out.println("<h2 style='color: red'>Informe o nome!</h2>");
                 } else {
-                    out.println("<h2>Olá, <b>" + nome + "</b></h2>");
+                    out.println("<h2>Olá, " + nome + "</h2>");
                 }
             }
             out.println("</body>");
