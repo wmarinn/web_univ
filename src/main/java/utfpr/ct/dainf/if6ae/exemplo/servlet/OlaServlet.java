@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package utfpr.ct.dainf.if6ae.exemplos.servlet;
+package utfpr.ct.dainf.if6ae.exemplo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,24 +13,23 @@ import javax.servlet.http.HttpServletResponse;
  * IF6AE Desenvolvimento de Aplicaçoões Web
  * @author Wilson Horstmeyer Bogado <wilson@utfpr.edu.br>
  */
-@WebServlet(name = "Modelo", urlPatterns = {"/modelo", "/xyz"})
-public class Modelo extends HttpServlet {
+@WebServlet(name = "Ola Servlet", urlPatterns = {"/ola"})
+public class OlaServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processa requisições HTTP para os métodos
+     * <code>GET</code> e
+     * <code>POST</code>.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request Requisição
+     * @param response Resposta
+     * @throws ServletException Se ocorrer um exceção específica de Servlet
+     * @throws IOException Se ocorrer uma exceção de E/S
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
+        try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" "
                     + "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
             out.println("<html>");
@@ -42,8 +37,8 @@ public class Modelo extends HttpServlet {
             out.println("<title>Modelo de Servlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Modelo de Servlet em " + request.getContextPath() + "</h1>");
-            out.println("<form action='modelo' method='post'>");
+            out.println("<h1>Exemplo de Servlet Simples em " + request.getContextPath() + "</h1>");
+            out.println("<form action='ola' method='post'>");
             out.println("Nome: <input type='text' name='nome'/><br/>");
             out.println("<input type='submit' value='Enviar'/><br/>");
             out.println("</form>");
@@ -57,20 +52,18 @@ public class Modelo extends HttpServlet {
             }
             out.println("</body>");
             out.println("</html>");
-        } finally {            
-            out.close();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Processa a requisição HTTP para o método
+     * <code>GET</code>.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request Requisição
+     * @param response Resposta
+     * @throws ServletException Se ocorrer um exceção específica de Servlet
+     * @throws IOException Se ocorrer uma exceção de E/S
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -79,13 +72,13 @@ public class Modelo extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Processa a requisição HTTP para o método
+     * <code>POST</code>.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request Requisição
+     * @param response Resposta
+     * @throws ServletException Se ocorrer um exceção específica de Servlet
+     * @throws IOException Se ocorrer uma exceção de E/S
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -94,12 +87,11 @@ public class Modelo extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
+     * Retorna uma descrição resumida do servlet.
+     * @return Uma descrição resumida.
      */
     @Override
     public String getServletInfo() {
-        return "Modelo de servlet";
+        return "Exemplo de servlet simples";
     }// </editor-fold>
 }
