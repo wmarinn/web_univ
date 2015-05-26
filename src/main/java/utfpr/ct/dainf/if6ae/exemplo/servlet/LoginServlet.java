@@ -42,15 +42,33 @@ public class LoginServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             out.println("<form action='login' method='post'>");
-            response.sendRedirect("/login.xhtml");
+            //response.sendRedirect("login.xhtml");
             
             String login = request.getParameter("login");
             if  (request.getMethod().equalsIgnoreCase("post")) {
                 if (login == null || login.trim().isEmpty()) {
                     out.println("<h2 style='color: red'>Informe o nome!</h2>");
                     request.setAttribute(login, out);
-                } else {
+                }
+                else {
                     out.println("<h2>Olá, " + login + "</h2>");
+                }
+            }
+            String senha = request.getParameter("senha");
+            String perfil = request.getParameter("perfil");
+            if  (request.getMethod().equalsIgnoreCase("post")) {
+                if (senha == null || senha.trim().isEmpty()) {
+                    out.println("<h2 style='color: red'>Informe a senha!</h2>");
+                    request.setAttribute(senha, out);
+                }
+                else {
+                    out.println("<h2>Olá, " + senha + "</h2>");
+                    if(login.equals(senha)){
+                        response.sendRedirect("sucesso?login=" + login + "&perfil=" + perfil);
+                    }
+                    else{
+                        response.sendRedirect("erro.xhtml");
+                    }
                 }
             }
             
